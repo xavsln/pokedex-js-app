@@ -7,19 +7,16 @@ let pokemonRepository = (function () {
       types: ['grass', 'poison'],
       height: 0.7
     },
-
     {
       name: 'Charmander',
       types: ['fire'],
       height: 0.6
     },
-
     {
       name: 'Squirtle',
       types: ['water'],
       height: 0.5
     },
-
     {
       name: 'Caterpie',
       types: ['bug'],
@@ -27,42 +24,59 @@ let pokemonRepository = (function () {
     }
   ];
 
+  // When called getAll will return the all list of Pokemon
   function getAll(pokemon){
     return pokemonList;
   }
 
+  // When called, will add a Pokemon Object to the Pokemon list
   function add(pokemon){
     pokemonList.push(pokemon);
-    console.log(Object.keys(pokemon));
     alert('New pokemon successfully added');
   }
 
+  // When called, this function will check that the entered value is an Object
   function addv(pokemon){
     // Check entered pokemon is an Object
-    console.log(Object.keys(pokemon));
     if (typeof(pokemon)==='object') {
       return add(pokemon);
     } else {
-        alert('Pokemon not added, entered data shall be an Object');
+      alert('Pokemon not added, entered data shall be an Object');
     }
   };
 
-  // pokemonRepository function will return either getAll or add
+  // When called this function will filter the pokemonList to search for a match
+  function filterPokemon(searchedPokemonName){
+    // let searchedPokemonName = 'Squirtle';
+    let filtered = pokemonList.filter(pokemon => pokemon.name.toLowerCase() === searchedPokemonName);
+
+    if (filtered.length > 0) {
+      alert("There is a match!");
+      console.log(filtered);
+    } else {
+      alert('No match found!')
+    }
+  }
+
+  // pokemonRepository function will return either getAll, add etc... and then trigger the appropriate function
   return {
     getAll: getAll, // if pokemonRepository.getAll() is selected then this will trigger the getAll(pokemon) function
     add: add, // if pokemonRepository.add() is selected then this will trigger the add(pokemon) function
-    addv: addv // if pokemonRepository.add() is selected then this will trigger the addv(pokemon) function
+    addv: addv, // if pokemonRepository.add() is selected then this will trigger the addv(pokemon) function
+    filterPokemon:filterPokemon
   }
 
 })();
 
-// pokemonRepository.add('test');
 // console.log(pokemonRepository.addv('test'));
+
 console.log(pokemonRepository.addv({
   name: 'test',
   types: ['test'],
   height: 1.1
 }));
+
+// console.log(pokemonRepository.addv('test'));
 
 console.log(pokemonRepository.getAll());
 
@@ -80,3 +94,7 @@ pokemonRepository.getAll().forEach(function(pokemon){
     document.write('<p>'+ pokemon.name + ' (heigh: '+ pokemon.height + ' m)' + '</p>');
   }
 });
+
+// Request the name of the Pokemon we want to search
+let searchedPokemonName = prompt("Enter the name of the Pokemon you are looking for.")
+pokemonRepository.filterPokemon(searchedPokemonName.toLowerCase());
