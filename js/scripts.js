@@ -33,11 +33,13 @@ let pokemonRepository = (function () {
 
   function add(pokemon){
     pokemonList.push(pokemon);
+    console.log(Object.keys(pokemon));
     alert('New pokemon successfully added');
   }
 
   function addv(pokemon){
     // Check entered pokemon is an Object
+    console.log(Object.keys(pokemon));
     if (typeof(pokemon)==='object') {
       return add(pokemon);
     } else {
@@ -55,9 +57,12 @@ let pokemonRepository = (function () {
 })();
 
 // pokemonRepository.add('test');
-console.log(pokemonRepository.addv('test'));
-console.log(pokemonRepository.addv({}));
-
+// console.log(pokemonRepository.addv('test'));
+console.log(pokemonRepository.addv({
+  name: 'test',
+  types: ['test'],
+  height: 1.1
+}));
 
 console.log(pokemonRepository.getAll());
 
