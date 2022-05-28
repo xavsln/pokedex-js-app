@@ -33,15 +33,33 @@ let pokemonRepository = (function () {
 
   function add(pokemon){
     pokemonList.push(pokemon);
+    alert('New pokemon successfully added');
   }
+
+  function addv(pokemon){
+    // Check entered pokemon is an Object
+    if (typeof(pokemon)==='object') {
+      return add(pokemon);
+    } else {
+        alert('Pokemon not added, entered data shall be an Object');
+    }
+  };
 
   // pokemonRepository function will return either getAll or add
   return {
     getAll: getAll, // if pokemonRepository.getAll() is selected then this will trigger the getAll(pokemon) function
-    add: add // if pokemonRepository.add() is selected then this will trigger the add(pokemon) function
+    add: add, // if pokemonRepository.add() is selected then this will trigger the add(pokemon) function
+    addv: addv // if pokemonRepository.add() is selected then this will trigger the addv(pokemon) function
   }
 
 })();
+
+// pokemonRepository.add('test');
+console.log(pokemonRepository.addv('test'));
+console.log(pokemonRepository.addv({}));
+
+
+console.log(pokemonRepository.getAll());
 
 // Create a conditional that check the height of each Pokemon and indicate "Wow, that's big" in case it is higher than a certain value
 // Define a heigh that triggers the message
