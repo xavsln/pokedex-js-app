@@ -48,7 +48,7 @@ let pokemonRepository = (function () {
   // When called this function will filter the pokemonList to search for a match
   function filterPokemon(searchedPokemonName){
     // let searchedPokemonName = 'Squirtle';
-    let filtered = pokemonList.filter(pokemon => pokemon.name.toLowerCase() === searchedPokemonName);
+    let filtered = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(searchedPokemonName));
 
     if (filtered.length > 0) {
       alert("There is a match!");
