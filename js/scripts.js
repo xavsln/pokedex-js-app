@@ -58,23 +58,40 @@ let pokemonRepository = (function () {
     }
   }
 
+  function addListItem(pokemon){
+    let listPokemon = document.querySelector('.pokemon-list');
+
+    let listItem = document.createElement('li');
+
+    // Create a button and add it to the DOM
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+
+    // We add a class to our button to style it
+    button.classList.add('btn');
+    listItem.appendChild(button);
+
+    listPokemon.appendChild(listItem);
+  }
+
   // pokemonRepository function will return either getAll, add etc... and then trigger the appropriate function
   return {
     getAll: getAll, // if pokemonRepository.getAll() is selected then this will trigger the getAll(pokemon) function
     add: add, // if pokemonRepository.add() is selected then this will trigger the add(pokemon) function
     addv: addv, // if pokemonRepository.add() is selected then this will trigger the addv(pokemon) function
-    filterPokemon:filterPokemon
+    filterPokemon:filterPokemon,
+    addListItem: addListItem
   }
 
 })();
 
 // console.log(pokemonRepository.addv('test'));
 
-console.log(pokemonRepository.addv({
-  name: 'test',
-  types: ['test'],
-  height: 1.1
-}));
+// console.log(pokemonRepository.addv({
+//   name: 'test',
+//   types: ['test'],
+//   height: 1.1
+// }));
 
 // console.log(pokemonRepository.addv('test'));
 
@@ -88,13 +105,9 @@ let thresholdHeight = 0.5;
 // If the Pokemon height is higher than the defined thresholdHeight then "- Wow, that's big" message will be added to the name and height of the Pokemon
 // Otherwise, only the name and height of the Pokemon will be sent to the DOM
 pokemonRepository.getAll().forEach(function(pokemon){
-  if (pokemon.height > thresholdHeight) {
-    document.write('<p>'+ pokemon.name + ' (heigh: '+ pokemon.height + ' m)' + ' - Wow, that\'s big!</p>');
-  } else {
-    document.write('<p>'+ pokemon.name + ' (heigh: '+ pokemon.height + ' m)' + '</p>');
-  }
+  return pokemonRepository.addListItem(pokemon);
 });
 
 // Request the name of the Pokemon we want to search
-let searchedPokemonName = prompt("Enter the name of the Pokemon you are looking for.")
-pokemonRepository.filterPokemon(searchedPokemonName.toLowerCase());
+// let searchedPokemonName = prompt("Enter the name of the Pokemon you are looking for.")
+// pokemonRepository.filterPokemon(searchedPokemonName.toLowerCase());
