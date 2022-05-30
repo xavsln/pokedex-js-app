@@ -72,6 +72,15 @@ let pokemonRepository = (function () {
     listItem.appendChild(button);
 
     listPokemon.appendChild(listItem);
+
+    // Add an event listener to our button element
+    button.addEventListener('click', function(){
+      showDetails(pokemon);
+    })
+  }
+
+  function showDetails(pokemon){
+    console.log(pokemon);
   }
 
   // pokemonRepository function will return either getAll, add etc... and then trigger the appropriate function
