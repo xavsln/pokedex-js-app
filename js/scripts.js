@@ -25,7 +25,7 @@ let pokemonRepository = (function () {
   ];
 
   // When called getAll will return the all list of Pokemon
-  function getAll(pokemon){
+  function getAll(){
     return pokemonList;
   }
 
