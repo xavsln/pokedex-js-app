@@ -1,28 +1,50 @@
 // Wrap our pokemonList variable in an IIFE
 let pokemonRepository = (function () {
   // Create a new Array of Pokemon
-  let pokemonList = [
-    {
-      name: 'Bulbasaur',
-      types: ['grass', 'poison'],
-      height: 0.7
-    },
-    {
-      name: 'Charmander',
-      types: ['fire'],
-      height: 0.6
-    },
-    {
-      name: 'Squirtle',
-      types: ['water'],
-      height: 0.5
-    },
-    {
-      name: 'Caterpie',
-      types: ['bug'],
-      height: 0.3
-    }
-  ];
+  // let pokemonList = [
+  //   {
+  //     name: 'Bulbasaur',
+  //     types: ['grass', 'poison'],
+  //     height: 0.7
+  //   },
+  //   {
+  //     name: 'Charmander',
+  //     types: ['fire'],
+  //     height: 0.6
+  //   },
+  //   {
+  //     name: 'Squirtle',
+  //     types: ['water'],
+  //     height: 0.5
+  //   },
+  //   {
+  //     name: 'Caterpie',
+  //     types: ['bug'],
+  //     height: 0.3
+  //   }
+  // ];
+
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json){
+      json.results.forEach(function (item){
+        // We create a pokemon Object for each item
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        }
+        // We add this new pokemon Object to the pokemonList Array
+        add(pokemon);
+      });
+    }).catch(function(e){
+      console.log(e);
+    })
+  }
+
 
   // When called getAll will return the all list of Pokemon
   function getAll(){
@@ -32,7 +54,7 @@ let pokemonRepository = (function () {
   // When called, will add a Pokemon Object to the Pokemon list
   function add(pokemon){
     pokemonList.push(pokemon);
-    alert('New pokemon successfully added');
+    // alert('New pokemon successfully added');
   }
 
   // When called, this function will check that the entered value is an Object
@@ -89,7 +111,8 @@ let pokemonRepository = (function () {
     add: add, // if pokemonRepository.add() is selected then this will trigger the add(pokemon) function
     addv: addv, // if pokemonRepository.add() is selected then this will trigger the addv(pokemon) function
     filterPokemon:filterPokemon,
-    addListItem: addListItem
+    addListItem: addListItem,
+    loadList: loadList
   }
 
 })();
@@ -104,17 +127,21 @@ let pokemonRepository = (function () {
 
 // console.log(pokemonRepository.addv('test'));
 
-console.log(pokemonRepository.getAll());
+// console.log(pokemonRepository.getAll());
 
 // Create a conditional that check the height of each Pokemon and indicate "Wow, that's big" in case it is higher than a certain value
 // Define a heigh that triggers the message
-let thresholdHeight = 0.5;
+// let thresholdHeight = 0.5;
 
 // Create a loop that compares all Pokemon height against the thresholdHeight
 // If the Pokemon height is higher than the defined thresholdHeight then "- Wow, that's big" message will be added to the name and height of the Pokemon
 // Otherwise, only the name and height of the Pokemon will be sent to the DOM
-pokemonRepository.getAll().forEach(function(pokemon){
-  return pokemonRepository.addListItem(pokemon);
+
+// Load Pokemon from the API
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon){
+    return pokemonRepository.addListItem(pokemon);
+  });
 });
 
 // Request the name of the Pokemon we want to search
