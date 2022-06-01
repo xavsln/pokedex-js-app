@@ -45,6 +45,18 @@ let pokemonRepository = (function () {
     })
   }
 
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response){
+      return response.json();
+    }).then(function (details){
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function(e){
+      console.log(e);
+    });
+  }
 
   // When called getAll will return the all list of Pokemon
   function getAll(){
@@ -102,6 +114,7 @@ let pokemonRepository = (function () {
   }
 
   function showDetails(pokemon){
+    loadDetails(pokemon);
     console.log(pokemon);
   }
 
@@ -112,7 +125,8 @@ let pokemonRepository = (function () {
     addv: addv, // if pokemonRepository.add() is selected then this will trigger the addv(pokemon) function
     filterPokemon:filterPokemon,
     addListItem: addListItem,
-    loadList: loadList
+    loadList: loadList,
+    loadDetails: loadDetails
   }
 
 })();
