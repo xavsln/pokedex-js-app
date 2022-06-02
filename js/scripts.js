@@ -28,6 +28,9 @@ let pokemonRepository = (function () {
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function loadList() {
+    // console.log('test from the loadList');
+    showLoadingMessage();
+
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json){
@@ -40,9 +43,11 @@ let pokemonRepository = (function () {
         // We add this new pokemon Object to the pokemonList Array
         add(pokemon);
       });
+      hideLoadingMessage();
     }).catch(function(e){
       console.log(e);
     })
+
   }
 
   function loadDetails(item) {
@@ -56,6 +61,26 @@ let pokemonRepository = (function () {
     }).catch(function(e){
       console.log(e);
     });
+  }
+
+  function showLoadingMessage(){
+    let loadingMessage = document.querySelector('.loading-message-placeholder');
+
+    let para = document.createElement('p');
+
+    para.innerText = 'LOADING... Please wait...';
+    console.log(para);
+
+    para.classList.add('para-style');
+    loadingMessage.appendChild(para);
+  }
+
+  function hideLoadingMessage(){
+    let loadingMessage = document.querySelector('.loading-message-placeholder');
+    setTimeout(function () {
+      loadingMessage.classList.add('message-style--hide');
+    }, 2000);
+
   }
 
   // When called getAll will return the all list of Pokemon
@@ -126,9 +151,10 @@ let pokemonRepository = (function () {
     filterPokemon:filterPokemon,
     addListItem: addListItem,
     loadList: loadList,
-    loadDetails: loadDetails
+    loadDetails: loadDetails,
+    showLoadingMessage:showLoadingMessage,
+    hideLoadingMessage: hideLoadingMessage
   }
-
 })();
 
 // console.log(pokemonRepository.addv('test'));
@@ -157,6 +183,8 @@ pokemonRepository.loadList().then(function() {
     return pokemonRepository.addListItem(pokemon);
   });
 });
+
+// pokemonRepository.hideLoadingMessage();
 
 // Request the name of the Pokemon we want to search
 // let searchedPokemonName = prompt("Enter the name of the Pokemon you are looking for.")

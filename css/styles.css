@@ -40,6 +40,28 @@ body {
   border: 3px solid blue;
 }
 
+.displayLoadingMessage {
+  display: block;
+  width: 300px;
+}
+
+.para-style {
+  color: blue;
+  /* border: 1px solid blue; */
+}
+
+.message-style--hide {
+  display: none;
+}
+
+.loader{
+  /* border: 1px solid red; */
+  text-align: center;
+  padding: 0;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
 @media all and (max-width: 750px) {
 
   .main-section-shared {
