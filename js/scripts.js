@@ -11,16 +11,6 @@ let pokemonRepository = (function () {
   //     name: 'Charmander',
   //     types: ['fire'],
   //     height: 0.6
-  //   },
-  //   {
-  //     name: 'Squirtle',
-  //     types: ['water'],
-  //     height: 0.5
-  //   },
-  //   {
-  //     name: 'Caterpie',
-  //     types: ['bug'],
-  //     height: 0.3
   //   }
   // ];
 
@@ -153,26 +143,6 @@ let pokemonRepository = (function () {
   }
 })();
 
-// console.log(pokemonRepository.addv('test'));
-
-// console.log(pokemonRepository.addv({
-//   name: 'test',
-//   types: ['test'],
-//   height: 1.1
-// }));
-
-// console.log(pokemonRepository.addv('test'));
-
-// console.log(pokemonRepository.getAll());
-
-// Create a conditional that check the height of each Pokemon and indicate "Wow, that's big" in case it is higher than a certain value
-// Define a heigh that triggers the message
-// let thresholdHeight = 0.5;
-
-// Create a loop that compares all Pokemon height against the thresholdHeight
-// If the Pokemon height is higher than the defined thresholdHeight then "- Wow, that's big" message will be added to the name and height of the Pokemon
-// Otherwise, only the name and height of the Pokemon will be sent to the DOM
-
 // Load Pokemon from the API
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon){
@@ -180,7 +150,6 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-// pokemonRepository.hideLoadingMessage();
 
 // Request the name of the Pokemon we want to search
 // let searchedPokemonName = prompt("Enter the name of the Pokemon you are looking for.")
