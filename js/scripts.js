@@ -66,21 +66,17 @@ let pokemonRepository = (function () {
   function showLoadingMessage(){
     let loadingMessage = document.querySelector('.loading-message-placeholder');
 
-    let para = document.createElement('p');
-
-    para.innerText = 'LOADING... Please wait...';
-    console.log(para);
-
-    para.classList.add('para-style');
-    loadingMessage.appendChild(para);
+    loadingMessage.innerText = 'LOADING... Please wait...';
+    // console.log(loadingMessage);
   }
 
   function hideLoadingMessage(){
     let loadingMessage = document.querySelector('.loading-message-placeholder');
     setTimeout(function () {
-      loadingMessage.classList.add('message-style--hide');
-    }, 2000);
 
+      loadingMessage.innerText = '';
+      // console.log(loadingMessage);
+    }, 2000);
   }
 
   // When called getAll will return the all list of Pokemon
