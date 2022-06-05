@@ -1,5 +1,5 @@
 # App description:
-This is a simple JavaScript App that shows 150 Pokemon on a single page.
+This is a simple JavaScript App that shows 150 Pokemons on a single page.
 User will then be able to select a Pokemon to see details such as its name, height, image and types.
 
 
@@ -7,5 +7,5 @@ User will then be able to select a Pokemon to see details such as its name, heig
 * JavaScript
 
 
-#API used:
+# API used:
 * PokéApi
