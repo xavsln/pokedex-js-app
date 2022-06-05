@@ -17,6 +17,9 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
+  // We define/declare loadingMessage variable that will be used in showLoadingMessage() and hideLoadingMessage()
+  let loadingMessage = document.querySelector('.loading-message-placeholder');
+
   function loadList() {
     // console.log('test from the loadList');
     showLoadingMessage();
@@ -54,14 +57,11 @@ let pokemonRepository = (function () {
   }
 
   function showLoadingMessage(){
-    let loadingMessage = document.querySelector('.loading-message-placeholder');
-
     loadingMessage.innerText = 'LOADING... Please wait...';
     // console.log(loadingMessage);
   }
 
   function hideLoadingMessage(){
-    let loadingMessage = document.querySelector('.loading-message-placeholder');
     setTimeout(function () {
 
       loadingMessage.innerText = '';
