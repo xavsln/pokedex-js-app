@@ -66,7 +66,7 @@ let pokemonRepository = (function () {
 
       loadingMessage.innerText = '';
       // console.log(loadingMessage);
-    }, 2000);
+    }, 1000);
   }
 
   // When called getAll will return the all list of Pokemon
