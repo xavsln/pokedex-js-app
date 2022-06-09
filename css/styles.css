@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   /* Background from https://www.eggradients.com/category/metal-gradient */
   height: 100%;
   background-color: #d7d7d7;
