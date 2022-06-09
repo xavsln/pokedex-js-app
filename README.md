@@ -5,10 +5,9 @@ A search bar also allows the User to find a specific Pokémon by name.
 
 
 # App dependencies:
-* HTML
-* CSS
 * JavaScript
 * Bootstrap
+* jQuery
 
 # API used:
 * PokéApi
