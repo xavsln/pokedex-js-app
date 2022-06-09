@@ -61,6 +61,11 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+  function getSearchedAndFound (foundItems){
+    return foundItems;
+  }
+
+
   // When called, will add a Pokemon Object to the Pokemon list
   function add(pokemon){
     pokemonList.push(pokemon);
@@ -84,9 +89,15 @@ let pokemonRepository = (function () {
 
     if (filtered.length > 0) {
       alert("There is a match!");
+      $('.pokemon-list').empty();
       console.log(filtered);
+      getSearchedAndFound(filtered).forEach(function(pokemon){
+          console.log(pokemon);
+          addListItem(pokemon);
+        });
+
     } else {
-      alert('No match found!')
+      alert('No match found!');
     }
   }
 
@@ -95,7 +106,6 @@ let pokemonRepository = (function () {
 
     // let listItem = document.createElement('li');
     let listItem = $('<div class="col-xl-3 col-lg-4 col-md-6"></div>');
-
 
     // Create a button and add it to the DOM
     let buttonPokemon = $('<button type="button" class="btn-pokemon" data-toggle="modal" data-target="#ModalCenter">' + pokemon.name + '</button>');
@@ -115,7 +125,6 @@ let pokemonRepository = (function () {
       showModal(pokemon);
     });
   }
-
 
   function showModal(pokemon){
 
@@ -170,16 +179,19 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-// Request the name of the Pokemon we want to search
-// let searchedPokemonName = prompt("Enter the name of the Pokemon you are looking for.")
-// pokemonRepository.filterPokemon(searchedPokemonName.toLowerCase());
+// Search functionality below
+$( "#search-button" ).on( "click", search );
 
+function search() {
+  let userPokemonSearchInput = $('#user-pokemon-search-input').val();
+  console.log(userPokemonSearchInput);
+  alert( "clicked after user entered: " + userPokemonSearchInput);
+  pokemonRepository.filterPokemon(userPokemonSearchInput.toLowerCase());
+}
 
-// $( "#welcome" ).on( "click", notify );
-//
-// function notify() {
-//   let userPokemonSearchInput = $('#user-pokemon-search-input').val();
-//   console.log(userPokemonSearchInput);
-//   alert( "clicked after user entered: " + userPokemonSearchInput);
-//   pokemonRepository.filterPokemon(userPokemonSearchInput.toLowerCase());
-// }
+$('#user-pokemon-search-input').on('keypress', function(event){
+  if(event.which == '13'){
+    alert('You pressed a "enter" key in textbox, here submit your form');
+    search();
+  }
+});
