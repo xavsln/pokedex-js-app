@@ -1,18 +1,5 @@
 // Wrap our pokemonList variable in an IIFE
 let pokemonRepository = (function () {
-  // Create a new Array of Pokemon
-  // let pokemonList = [
-  //   {
-  //     name: 'Bulbasaur',
-  //     types: ['grass', 'poison'],
-  //     height: 0.7
-  //   },
-  //   {
-  //     name: 'Charmander',
-  //     types: ['fire'],
-  //     height: 0.6
-  //   }
-  // ];
 
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
@@ -111,13 +98,8 @@ let pokemonRepository = (function () {
 
 
     // Create a button and add it to the DOM
-    // let button = document.createElement('button');
-    // button.innerText = pokemon.name;
-
     let buttonPokemon = $('<button type="button" class="btn-pokemon" data-toggle="modal" data-target="#ModalCenter">' + pokemon.name + '</button>');
 
-    // We add a class to our button to style it
-    // button.classList.add('btn-pokemon');
     listItem.append(buttonPokemon);
 
     listPokemon.append(listItem);
@@ -133,78 +115,6 @@ let pokemonRepository = (function () {
       showModal(pokemon);
     });
   }
-
-  // We define modalContainer which is the EXISTING #modal-container of our html
-  // let modalContainer = document.querySelector('#modal-container');
-  // function showModal(pokemon){
-
-    // We define a modal as a <div> that will be CREATED in this JS file
-    // modalContainer.innerHTML = ''; // [Q] - Do we really need to remove the content?
-
-    // We create a close button element that will trigger the hideModal function of the modal
-    // let modalCloseButton = document.createElement('button');
-    // modalCloseButton.innerHTML = 'close';
-    // modalCloseButton.classList.add('modal-close');
-    // modalCloseButton.addEventListener('click', hideModal);
-
-    // We create a new div for our Modal
-    // let modal = document.createElement('div');
-    // # We add a class to this modal to give it some styling
-    // modal.classList.add('modal');
-
-    // # We define the content of our modal
-    // ## We define and create the h1 of our modal that will contain the name of our Pokemon
-    // let modalTitle = document.createElement('h1');
-    // modalTitle.innerText = pokemon.name.toUpperCase();
-
-    // ## We define and create the p of our modal that will contain the height of our Pokemon
-    // let modalHeight = document.createElement('p');
-    // modalHeight.innerText = 'Height: ' + pokemon.height;
-
-    // ## We define and create the <img> of our modal
-    // let modalImg = document.createElement('img');
-    // modalImg.src = pokemon.imageUrl;
-    // modalImg.classList.add('modal-img');
-
-    // ## We define and create an element for the pokemon type(s)
-    // let modalTypes = document.createElement('p');
-    // console.log(pokemon.types[0].type.name);
-
-    // modalTypes.innerText = showTypes(pokemon.types);
-
-    // function showTypes(types){
-    //   let message = 'Types: ';
-    //
-    //   types.forEach((item, i) => {
-    //
-    //     message += '['+ item.type.name +']' + ' ';
-    //   })
-    //   return message;
-    // };
-
-    // We append our created elements to the modal
-    // modal.appendChild(modalCloseButton);
-    // modal.appendChild(modalTitle);
-    // modal.appendChild(modalHeight);
-    // modal.appendChild(modalImg);
-    // modal.appendChild(modalTypes);
-    // We append our modal to our modalContainer
-    // modalContainer.appendChild(modal);
-
-    // We display the content of our modal
-    // modalContainer.classList.add('is-visible');
-    //
-    // console.log(pokemon);
-
-  // }
-
-// ========================
-
-// Modals implementation using Bootstrap
-
-// ========================
-
-
 
 
   function showModal(pokemon){
@@ -232,36 +142,12 @@ let pokemonRepository = (function () {
       return message;
     };
 
-
     modalTitle.append(nameElement);
     modalBody.append(imageElement);
     modalBody.append(heightElement);
     modalBody.append(typesElement);
 
-
   }
-
-
-
-  // function hideModal(){
-  //   let modalContainer = document.querySelector('#modal-container');
-  //   modalContainer.classList.remove('is-visible');
-  // }
-
-  // window.addEventListener('keydown', (e) => {
-  //   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-  //     hideModal();
-  //   }
-  // });
-  //
-  // modalContainer.addEventListener('click', (e) => {
-  //   // Since this is also triggered when clicking INSIDE the modal
-  //   // We only want to close if the user clicks directly on the overlay
-  //   let target = e.target;
-  //   if (target === modalContainer) {
-  //     hideModal();
-  //   }
-  // });
 
   // pokemonRepository function will return either getAll, add etc... and then trigger the appropriate function
   return {
@@ -284,7 +170,16 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-
 // Request the name of the Pokemon we want to search
 // let searchedPokemonName = prompt("Enter the name of the Pokemon you are looking for.")
 // pokemonRepository.filterPokemon(searchedPokemonName.toLowerCase());
+
+
+// $( "#welcome" ).on( "click", notify );
+//
+// function notify() {
+//   let userPokemonSearchInput = $('#user-pokemon-search-input').val();
+//   console.log(userPokemonSearchInput);
+//   alert( "clicked after user entered: " + userPokemonSearchInput);
+//   pokemonRepository.filterPokemon(userPokemonSearchInput.toLowerCase());
+// }
