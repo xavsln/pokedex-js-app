@@ -114,7 +114,7 @@ let pokemonRepository = (function () {
     // let button = document.createElement('button');
     // button.innerText = pokemon.name;
 
-    let buttonPokemon = $('<button type="button" class="btn-pokemon" data-toggle="modal" data-target="#exampleModalCenter">' + pokemon.name + '</button>');
+    let buttonPokemon = $('<button type="button" class="btn-pokemon" data-toggle="modal" data-target="#ModalCenter">' + pokemon.name + '</button>');
 
     // We add a class to our button to style it
     // button.classList.add('btn-pokemon');
@@ -217,7 +217,7 @@ let pokemonRepository = (function () {
     modalBody.empty();
 
     let nameElement = $('<h1>' + pokemon.name + '</h1>');
-    let imageElement = $('<img class="modal-img style="width:50%">');
+    let imageElement = $('<img class="modal-img mx-auto d-block" style="width:70%">');
     imageElement.attr('src', pokemon.imageUrl);
     let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</p>');
     let typesElement = $('<p>' + 'Types: ' + showTypes(pokemon.types) + '</p>');
