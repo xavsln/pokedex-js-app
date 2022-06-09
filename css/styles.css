@@ -92,7 +92,7 @@ body {
 /* MODAL STYLING (STARTS)
 /*-----------------------------------------------*/
 
-#modal-container {
+/* #modal-container {
   position: fixed;
   padding: 20px;
   box-sizing: border-box;
@@ -103,17 +103,17 @@ body {
   background: rgba(0, 0, 0, 0.5);
 
   /* to show it above other content */
-  z-index: 999;
+  /* z-index: 999; */
 
   /* to allow scrolling if the screen is not high enough*/
-  overflow: auto;
+  /* overflow: auto; */
 
   /* this is used to center the modal */
-  display: grid;
-  text-align: center;
-}
+  /* display: grid; */
+  /* text-align: center; */
+/* } */ 
 
-.modal {
+/* .modal {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
@@ -123,8 +123,8 @@ body {
   max-width: 700px;
   text-align: left;
   border-radius: 5px;
-}
-
+} */
+/*
 .modal-close {
   float: right;
   -webkit-appearance: none;
@@ -148,7 +148,7 @@ body {
 
 #modal-container.is-visible {
   display: block;
-}
+} */
 
 .modal-img {
   display: block;

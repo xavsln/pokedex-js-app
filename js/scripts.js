@@ -104,119 +104,164 @@ let pokemonRepository = (function () {
   }
 
   function addListItem(pokemon){
-    let listPokemon = document.querySelector('.pokemon-list');
+    let listPokemon = $('.pokemon-list');
 
     // let listItem = document.createElement('li');
-    let listItem = document.createElement('div');
-    listItem.classList.add('col-xl-3', 'col-lg-4', 'col-md-6');
+    let listItem = $('<div class="col-xl-3 col-lg-4 col-md-6"></div>');
+
 
     // Create a button and add it to the DOM
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
+    // let button = document.createElement('button');
+    // button.innerText = pokemon.name;
+
+    let buttonPokemon = $('<button type="button" class="btn-pokemon" data-toggle="modal" data-target="#exampleModalCenter">' + pokemon.name + '</button>');
 
     // We add a class to our button to style it
-    button.classList.add('btn-pokemon');
-    listItem.appendChild(button);
+    // button.classList.add('btn-pokemon');
+    listItem.append(buttonPokemon);
 
-    listPokemon.appendChild(listItem);
+    listPokemon.append(listItem);
 
     // Add an event listener to our button element
-    button.addEventListener('click', function(){
+    buttonPokemon.on('click', function(){
       showDetails(pokemon);
     })
   }
 
   function showDetails(pokemon){
     loadDetails(pokemon).then(function(){
-      // console.log(pokemon.height);
-      // When details are shown, a modal will pop up
       showModal(pokemon);
     });
   }
 
   // We define modalContainer which is the EXISTING #modal-container of our html
-  let modalContainer = document.querySelector('#modal-container');
-  function showModal(pokemon){
+  // let modalContainer = document.querySelector('#modal-container');
+  // function showModal(pokemon){
 
     // We define a modal as a <div> that will be CREATED in this JS file
-    modalContainer.innerHTML = ''; // [Q] - Do we really need to remove the content?
+    // modalContainer.innerHTML = ''; // [Q] - Do we really need to remove the content?
 
     // We create a close button element that will trigger the hideModal function of the modal
-    let modalCloseButton = document.createElement('button');
-    modalCloseButton.innerHTML = 'close';
-    modalCloseButton.classList.add('modal-close');
-    modalCloseButton.addEventListener('click', hideModal);
+    // let modalCloseButton = document.createElement('button');
+    // modalCloseButton.innerHTML = 'close';
+    // modalCloseButton.classList.add('modal-close');
+    // modalCloseButton.addEventListener('click', hideModal);
 
     // We create a new div for our Modal
-    let modal = document.createElement('div');
+    // let modal = document.createElement('div');
     // # We add a class to this modal to give it some styling
-    modal.classList.add('modal');
+    // modal.classList.add('modal');
 
     // # We define the content of our modal
     // ## We define and create the h1 of our modal that will contain the name of our Pokemon
-    let modalTitle = document.createElement('h1');
-    modalTitle.innerText = pokemon.name.toUpperCase();
+    // let modalTitle = document.createElement('h1');
+    // modalTitle.innerText = pokemon.name.toUpperCase();
 
     // ## We define and create the p of our modal that will contain the height of our Pokemon
-    let modalHeight = document.createElement('p');
-    modalHeight.innerText = 'Height: ' + pokemon.height;
+    // let modalHeight = document.createElement('p');
+    // modalHeight.innerText = 'Height: ' + pokemon.height;
 
     // ## We define and create the <img> of our modal
-    let modalImg = document.createElement('img');
-    modalImg.src = pokemon.imageUrl;
-    modalImg.classList.add('modal-img');
+    // let modalImg = document.createElement('img');
+    // modalImg.src = pokemon.imageUrl;
+    // modalImg.classList.add('modal-img');
 
     // ## We define and create an element for the pokemon type(s)
-    let modalTypes = document.createElement('p');
+    // let modalTypes = document.createElement('p');
     // console.log(pokemon.types[0].type.name);
 
-    modalTypes.innerText = showTypes(pokemon.types);
+    // modalTypes.innerText = showTypes(pokemon.types);
+
+    // function showTypes(types){
+    //   let message = 'Types: ';
+    //
+    //   types.forEach((item, i) => {
+    //
+    //     message += '['+ item.type.name +']' + ' ';
+    //   })
+    //   return message;
+    // };
+
+    // We append our created elements to the modal
+    // modal.appendChild(modalCloseButton);
+    // modal.appendChild(modalTitle);
+    // modal.appendChild(modalHeight);
+    // modal.appendChild(modalImg);
+    // modal.appendChild(modalTypes);
+    // We append our modal to our modalContainer
+    // modalContainer.appendChild(modal);
+
+    // We display the content of our modal
+    // modalContainer.classList.add('is-visible');
+    //
+    // console.log(pokemon);
+
+  // }
+
+// ========================
+
+// Modals implementation using Bootstrap
+
+// ========================
+
+
+
+
+  function showModal(pokemon){
+
+    let modalBody = $('.modal-body');
+    let modalTitle = $('.modal-title');
+    let modalFooter = $('.modal-header');
+
+    modalTitle.empty();
+    modalBody.empty();
+
+    let nameElement = $('<h1>' + pokemon.name + '</h1>');
+    let imageElement = $('<img class="modal-img style="width:50%">');
+    imageElement.attr('src', pokemon.imageUrl);
+    let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</p>');
+    let typesElement = $('<p>' + 'Types: ' + showTypes(pokemon.types) + '</p>');
+
 
     function showTypes(types){
-      let message = 'Types: ';
+      let message = '';
 
       types.forEach((item, i) => {
-        // console.log(item.type.name);
         message += '['+ item.type.name +']' + ' ';
       })
       return message;
     };
 
-    // We append our created elements to the modal
-    modal.appendChild(modalCloseButton);
-    modal.appendChild(modalTitle);
-    modal.appendChild(modalHeight);
-    modal.appendChild(modalImg);
-    modal.appendChild(modalTypes);
-    // We append our modal to our modalContainer
-    modalContainer.appendChild(modal);
 
-    // We display the content of our modal
-    modalContainer.classList.add('is-visible');
+    modalTitle.append(nameElement);
+    modalBody.append(imageElement);
+    modalBody.append(heightElement);
+    modalBody.append(typesElement);
 
-    console.log(pokemon);
 
   }
 
-  function hideModal(){
-    let modalContainer = document.querySelector('#modal-container');
-    modalContainer.classList.remove('is-visible');
-  }
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-      hideModal();
-    }
-  });
 
-  modalContainer.addEventListener('click', (e) => {
-    // Since this is also triggered when clicking INSIDE the modal
-    // We only want to close if the user clicks directly on the overlay
-    let target = e.target;
-    if (target === modalContainer) {
-      hideModal();
-    }
-  });
+  // function hideModal(){
+  //   let modalContainer = document.querySelector('#modal-container');
+  //   modalContainer.classList.remove('is-visible');
+  // }
+
+  // window.addEventListener('keydown', (e) => {
+  //   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+  //     hideModal();
+  //   }
+  // });
+  //
+  // modalContainer.addEventListener('click', (e) => {
+  //   // Since this is also triggered when clicking INSIDE the modal
+  //   // We only want to close if the user clicks directly on the overlay
+  //   let target = e.target;
+  //   if (target === modalContainer) {
+  //     hideModal();
+  //   }
+  // });
 
   // pokemonRepository function will return either getAll, add etc... and then trigger the appropriate function
   return {

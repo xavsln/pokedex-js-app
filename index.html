@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+  <!-- NAVBAR STARTS -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.html">
     <img src="img/international_pokemon_logo.svg" class="img-fluid logo-pokemon" alt="Logo Pokemon">
@@ -38,6 +38,8 @@
       </form>
     </div>
   </nav>
+  <!-- NAVBAR ENDS -->
+
 
   <main class="main-section-shared">
     <!-- <h1>Pokedex</h1> -->
@@ -45,18 +47,42 @@
 
     <div id="modal-container"></div>
 
-  </div>
+    <!-- MODAL STARTS -->
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Launch demo modal
+    </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL STARTS -->
+
 
   <div class="container">
     <!-- <ul class="pokemon-list"> -->
     <div class="row pokemon-list">
-
     </div>
+
   </div>
-
-
-</ul>
-</main>
+    <!-- </ul> -->
+  </main>
 
 <!-- Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
