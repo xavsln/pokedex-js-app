@@ -24,6 +24,11 @@ body {
   max-height: 25px;
 }
 
+.btn#search-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .btn-pokemon {
   border: 4px solid #2a75bb;
   background-color: #ffcb05;
