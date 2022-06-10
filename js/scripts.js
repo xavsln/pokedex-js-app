@@ -69,7 +69,6 @@ let pokemonRepository = (function () {
   // When called, will add a Pokemon Object to the Pokemon list
   function add(pokemon){
     pokemonList.push(pokemon);
-    // alert('New pokemon successfully added');
   }
 
   // When called, this function will check that the entered value is an Object
@@ -88,7 +87,7 @@ let pokemonRepository = (function () {
     let filtered = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(searchedPokemonName));
 
     if (filtered.length > 0) {
-      alert("There is a match!");
+      // alert("There is a match!");
       $('.pokemon-list').empty();
       console.log(filtered);
       getSearchedAndFound(filtered).forEach(function(pokemon){
@@ -185,13 +184,12 @@ $( "#search-button" ).on( "click", search );
 function search() {
   let userPokemonSearchInput = $('#user-pokemon-search-input').val();
   console.log(userPokemonSearchInput);
-  alert( "clicked after user entered: " + userPokemonSearchInput);
   pokemonRepository.filterPokemon(userPokemonSearchInput.toLowerCase());
 }
 
 $('#user-pokemon-search-input').on('keypress', function(event){
   if(event.which == '13'){
-    alert('You pressed a "enter" key in textbox, here submit your form');
+    event.preventDefault();   // stop the default behavior of the form submit.
     search();
   }
 });
