@@ -186,6 +186,7 @@ function search() {
   console.log(userPokemonSearchInput);
   pokemonRepository.filterPokemon(userPokemonSearchInput.toLowerCase());
   $('#user-pokemon-search-input').val('');
+  $('#navbarSupportedContent').removeClass('show');
 }
 
 $('#user-pokemon-search-input').on('keypress', function(event){
