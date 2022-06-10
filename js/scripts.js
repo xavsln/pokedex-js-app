@@ -185,6 +185,7 @@ function search() {
   let userPokemonSearchInput = $('#user-pokemon-search-input').val();
   console.log(userPokemonSearchInput);
   pokemonRepository.filterPokemon(userPokemonSearchInput.toLowerCase());
+  $('#user-pokemon-search-input').val('');
 }
 
 $('#user-pokemon-search-input').on('keypress', function(event){
