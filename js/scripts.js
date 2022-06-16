@@ -22,7 +22,7 @@ let pokemonRepository = (function() {
             detailsUrl: item.url
           };
           // We add this new pokemon Object to the pokemonList Array
-          add(pokemon);
+          addv(pokemon);
         });
         hideLoadingMessage();
       })
