@@ -18,4 +18,4 @@ A search bar also allows the User to find a specific Pokémon by name.
 
 # Link to webpage:
 
-https://xavsln.github.io/pokedex-js-app/
+https://xavsln.github.io/pokedex-js-app_v20220524-1/
