@@ -9,12 +9,10 @@ html {
 
 body {
   /* Background from https://www.eggradients.com/category/metal-gradient */
-  /* height: 100%; */
-  min-height: 100%;
   background-color: #d7d7d7;
   background-image: linear-gradient(147deg, #d7d7d7 0%, #353535 74%);
-  /* background-size: cover; */
   font-family: sans-serif;
+  min-height: 100%;
 }
 
 .logo-pokemon {
@@ -26,23 +24,21 @@ body {
 }
 
 .btn#search-button:focus {
-  outline: none;
   box-shadow: none;
+  outline: none;
 }
 
 .btn-pokemon {
-  border: 4px solid #2a75bb;
   background-color: #ffcb05;
-  color: #2a75bb;
+  border: 4px solid #2a75bb;
   border-radius: 5px;
-  padding: 14px 32px;
-  font-size: 16px;
+  color: #2a75bb;
   cursor: pointer;
-  /* width: 300px; */
-  width: 100%;
-  margin: 4px 2px;
   display: block;
+  font-size: 16px;
   margin: 4px auto;
+  padding: 14px 32px;
+  width: 100%;
 }
 
 .btn-pokemon:hover {
@@ -81,10 +77,9 @@ body {
 }
 
 .loader {
-  /* border: 1px solid red; */
-  text-align: center;
-  padding: 0;
   display: inline-block;
+  padding: 0;
+  text-align: center;
   vertical-align: text-bottom;
 }
 
@@ -94,15 +89,15 @@ body {
 /* } */
 
 footer {
-  bottom: 0;
   border-top: 1px solid #737373;
+  bottom: 0;
   color: #737373;
 }
 
 footer p {
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
   font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  margin-top: 0.8rem;
 }
 
 /* =================================================================================================== */
