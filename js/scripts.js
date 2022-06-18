@@ -1,10 +1,10 @@
 // Wrap our pokemonList variable in an IIFE
-let pokemonRepository = (function() {
+const pokemonRepository = (function() {
   let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   // We define/declare loadingMessage variable that will be used in showLoadingMessage() and hideLoadingMessage()
-  let loadingMessage = document.querySelector('.loading-message-placeholder');
+  const loadingMessage = document.querySelector('.loading-message-placeholder');
 
   function loadList() {
     // console.log('test from the loadList');
@@ -104,10 +104,10 @@ let pokemonRepository = (function() {
   }
 
   function addListItem(pokemon) {
-    let listPokemon = $('.pokemon-list');
+    const listPokemon = $('.pokemon-list');
 
     // let listItem = document.createElement('li');
-    let listItem = $('<div class="col-xl-3 col-lg-4 col-md-6"></div>');
+    const listItem = $('<div class="col-xl-3 col-lg-4 col-md-6"></div>');
 
     // Create a button and add it to the DOM
     let buttonPokemon = $(
@@ -133,15 +133,15 @@ let pokemonRepository = (function() {
   }
 
   function showModal(pokemon) {
-    let modalBody = $('.modal-body');
-    let modalTitle = $('.modal-title');
-    let modalFooter = $('.modal-header');
+    const modalBody = $('.modal-body');
+    const modalTitle = $('.modal-title');
+    const modalFooter = $('.modal-header');
 
     modalTitle.empty();
     modalBody.empty();
 
     let nameElement = $('<h1>' + pokemon.name + '</h1>');
-    let imageElement = $(
+    const imageElement = $(
       '<img class="modal-img mx-auto d-block" style="width:70%">'
     );
     imageElement.attr('src', pokemon.imageUrl);
