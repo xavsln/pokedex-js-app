@@ -41,6 +41,7 @@ body {
   font-size: 16px;
   margin: 4px auto;
   padding: 14px 32px;
+  text-transform: capitalize;
   width: 100%;
 }
 
@@ -89,7 +90,10 @@ body {
 .pokemon-list {
   text-align: center;
 }
-/* } */
+
+.modal-title {
+  text-transform: capitalize;
+}
 
 footer {
   border-top: 1px solid #737373;
