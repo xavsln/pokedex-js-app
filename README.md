@@ -1,3 +1,7 @@
+<img src="img/app-screenshot.png" width="75%" />
+
+---
+
 # App description:
 
 This is a simple JavaScript App that shows 150 Pokémons on a single page.
